@@ -217,6 +217,8 @@ def voting_similarity (o1,o2, numerical=False , categorical=True):
     input:
     - o1: first object
     - o2: Second object
+    - numerical (pool) True if the data is numerical
+    - categorical (pool) True if the data is categorical
     output:
     -  Computes Monge Elkan measure.
     """
