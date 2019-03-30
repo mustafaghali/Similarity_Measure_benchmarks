@@ -3,6 +3,9 @@
 
 
 import numpy as np
+
+from scipy.spatial import distance
+
 import py_stringmatching as sm
 from py_stringmatching import OverlapCoefficient
 from py_stringmatching import Jaccard
@@ -181,4 +184,3 @@ numerical_similarity_fun= {'cosine':cosine ,  'Euclidean_distance' : Euclidean_d
                           'wieghted_euclidean':wieghted_euclidean , 'mahalanobis':mahalanobis , 'minkowski':minkowski}
 categorical_similarity_fun = { 'cosine':cosine ,  'overlap':overlap , 'Jaccard_Distance':Jaccard_Distance , 'Monge_Elkan':Monge_Elkan ,
                               'dice':dice , 'soft_TF_IDF':soft_TF_IDF , 'tversky_Index':tversky_Index }
-
