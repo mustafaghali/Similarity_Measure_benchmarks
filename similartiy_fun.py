@@ -171,7 +171,7 @@ def soft_TF_IDF (o1,o2,threshold=0.9):
     """
     o1, o2 = list(o1) , list(o2)
     a=SoftTfIdf(sim_func=Affine().get_raw_score, threshold=threshold)
-    return a.get_raw_score(o1.tolist(),o2.tolist())
+    return a.get_raw_score(o1,o2)
 
 
 
@@ -184,7 +184,7 @@ def tversky_Index (o1,o2):
     output:
     -  Computes Tversky index similarity.
     """
-    return TverskyIndex().get_sim_score(o1.tolist(),o2.tolist())
+    return TverskyIndex().get_sim_score(o1,o2)
 
 numerical_similarity_fun= {'cosine':cosine ,  'Euclidean_distance' : Euclidean_distance,
                           'wieghted_euclidean':wieghted_euclidean , 'mahalanobis':mahalanobis , 'minkowski':minkowski}
