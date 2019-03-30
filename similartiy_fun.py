@@ -27,7 +27,7 @@ def cosine (o1,o2):
     - cosine between 01 and o2
     """
 #     return np.arccos(np.dot(o1,o2)/(np.linalg.norm(o1)*np.linalg.norm(o2)))
-    return Cosine().get_sim_score(o1,o2)
+    return Cosine().get_sim_score(o1.tolist(),o2.tolist())
 
 
 
@@ -108,7 +108,7 @@ def overlap (o1,o2):
     output:
     -  measure that measures the overlap between two sets
     """
-    return OverlapCoefficient().get_sim_score(o1,o2)
+    return OverlapCoefficient().get_sim_score(o1.tolist(),o2.tolist())
 
 
 
@@ -121,7 +121,7 @@ def Jaccard_Distance (o1,o2):
     output:
     -  Computes Jaccard measure.
     """
-    return Jaccard().get_sim_score(o1,o2)
+    return Jaccard().get_sim_score(o1.tolist(),o2.tolist())
 
 
 
@@ -135,7 +135,7 @@ def Monge_Elkan(o1,o2):
     output:
     -  Computes Monge Elkan measure.
     """
-    return MongeElkan().get_raw_score(o1,o2)
+    return MongeElkan().get_raw_score(o1.tolist(),o2.tolist())
 
 
 
@@ -148,7 +148,7 @@ def dice (o1,o2):
     output:
     -  Computes Dice measure.
     """
-    return Dice().get_sim_score(o1,o2)
+    return Dice().get_sim_score(o1.tolist(),o2.tolist())
 
 
 
@@ -162,7 +162,7 @@ def soft_TF_IDF (o1,o2,threshold=0.9):
     -  Computes Dice measure.
     """
     a=SoftTfIdf(sim_func=Affine().get_raw_score, threshold=threshold)
-    return a.get_raw_score(o1,o2)
+    return a.get_raw_score(o1.tolist(),o2.tolist())
 
 
 
@@ -175,7 +175,7 @@ def tversky_Index (o1,o2):
     output:
     -  Computes Tversky index similarity.
     """
-    return TverskyIndex().get_sim_score(o1,o2)
+    return TverskyIndex().get_sim_score(o1.tolist(),o2.tolist())
 
 numerical_similarity_fun= {'cosine':cosine ,  'Euclidean_distance' : Euclidean_distance,
                           'wieghted_euclidean':wieghted_euclidean , 'mahalanobis':mahalanobis , 'minkowski':minkowski}
