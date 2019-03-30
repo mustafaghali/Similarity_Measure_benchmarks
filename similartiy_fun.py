@@ -142,6 +142,10 @@ def Monge_Elkan(o1,o2):
     -  Computes Monge Elkan measure.
     """
     o1, o2 = list(o1) , list(o2)
+    for i in range (len(o1)):
+        o1[i]=str(o1[i])
+    for i in range (len(o2)):     
+        o2[i]=str(o2[i])
     return MongeElkan().get_raw_score(o1,o2)
 
 
