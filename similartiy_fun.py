@@ -220,7 +220,7 @@ def voting_similarity (o1,o2, numerical=False , categorical=True):
     - numerical (pool) True if the data is numerical
     - categorical (pool) True if the data is categorical
     output:
-    -  Computes Monge Elkan measure.
+    -  Computes overall score.
     """
     if numerical:
         w=1/4
