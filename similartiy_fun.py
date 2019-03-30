@@ -113,6 +113,10 @@ def overlap (o1,o2):
     -  measure that measures the overlap between two sets
     """
     o1, o2 = list(o1) , list(o2)
+    for i in range (len(o1)):
+        o1[i]=str(o1[i])
+    for i in range (len(o2)):     
+        o2[i]=str(o2[i])
     return OverlapCoefficient().get_sim_score(o1,o2)
 
 
@@ -127,6 +131,10 @@ def Jaccard_Distance (o1,o2):
     -  Computes Jaccard measure.
     """
     o1, o2 = list(o1) , list(o2)
+    for i in range (len(o1)):
+        o1[i]=str(o1[i])
+    for i in range (len(o2)):     
+        o2[i]=str(o2[i])
     return Jaccard().get_sim_score(o1,o2)
 
 
@@ -160,6 +168,10 @@ def dice (o1,o2):
     -  Computes Dice measure.
     """
     o1, o2 = list(o1) , list(o2)
+    for i in range (len(o1)):
+        o1[i]=str(o1[i])
+    for i in range (len(o2)):     
+        o2[i]=str(o2[i])
     return Dice().get_sim_score(o1,o2)
 
 
@@ -174,6 +186,10 @@ def soft_TF_IDF (o1,o2,threshold=0.9):
     -  Computes Dice measure.
     """
     o1, o2 = list(o1) , list(o2)
+    for i in range (len(o1)):
+        o1[i]=str(o1[i])
+    for i in range (len(o2)):     
+        o2[i]=str(o2[i])
     a=SoftTfIdf(sim_func=Affine().get_raw_score, threshold=threshold)
     return a.get_raw_score(o1,o2)
 
@@ -188,7 +204,29 @@ def tversky_Index (o1,o2):
     output:
     -  Computes Tversky index similarity.
     """
+    o1, o2 = list(o1) , list(o2)
+    for i in range (len(o1)):
+        o1[i]=str(o1[i])
+    for i in range (len(o2)):     
+        o2[i]=str(o2[i])
     return TverskyIndex().get_sim_score(o1,o2)
+
+def voting_similarity (o1,o2, numerical=False , categorical=True):
+    """
+     weight similarity function
+    input:
+    - o1: first object
+    - o2: Second object
+    output:
+    -  Computes Monge Elkan measure.
+    """
+    if numerical:
+        w=1/4
+        score=w * (cosine(o1,o2) + Euclidean_distance(o1,o2) + wieghted_euclidean(o1,o2) + mahalanobis(o1,o2)) 
+    else:
+        w=1/7
+        score=w * (cosine(o1,o2) + overlap(o1,o2) + Jaccard_Distance(o1,o2) + Monge_Elkan(o1,o2) + dice(o1,o2) + soft_TF_IDF(o1,o2) + tversky_Index(o1,o2))
+    return score
 
 numerical_similarity_fun= {'cosine':cosine ,  'Euclidean_distance' : Euclidean_distance,
                           'wieghted_euclidean':wieghted_euclidean , 'mahalanobis':mahalanobis , 'minkowski':minkowski}
