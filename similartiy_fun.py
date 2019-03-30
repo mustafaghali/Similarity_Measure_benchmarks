@@ -29,7 +29,7 @@ def cosine (o1,o2):
     output:
     - cosine between 01 and o2
     """
-#     return np.arccos(np.dot(o1,o2)/(np.linalg.norm(o1)*np.linalg.norm(o2)))
+    o1, o2 = list(o1) , list(o2)
     return Cosine().get_sim_score(o1,o2)
 
 
