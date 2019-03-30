@@ -44,6 +44,43 @@ def Euclidean_distance (o1,o2):
     return abs(o1-o2).sum()**(0.5)
 
 
+def wieghted_euclidean (o1,o2,w=0.1):
+    """
+    wieghted euclidean similarity function
+    input:
+    - o1: first object (List)
+    - o2: Second object (List)
+    output:
+    - wieghted euclidean distance between 01 and o2 (float)
+    """
+    o1 , o2= np.array(o1) , np.array(o2)
+    return distance.wminkowski(o1,o2,1,w)
+
+
+def mahalanobis (o1,o2):
+    """
+    Mahalanobis similarity function
+    input:
+    - o1: first object (List)
+    - o2: Second object (List)
+    output:
+    - Mahalanobis distance between 01 and o2 (float)
+    """
+    o1 , o2= np.array(o1) , np.array(o2)
+    inv_cov_matrix=np.eye(len(o1))
+    return distance.mahalanobis(o1,o2,inv_cov_matrix)
+
+def minkowski (o1,o2):
+    """
+    minkowski similarity function
+    input:
+    - o1: first object (List)
+    - o2: Second object (List)
+    output:
+    - minkowski distance between 01 and o2 (float)
+    """
+    return distance.minkowski(o1,o2)
+
 # # Categorical
 
 
@@ -140,7 +177,8 @@ def tversky_Index (o1,o2):
     """
     return TverskyIndex().get_sim_score(o1,o2)
 
-numerical_similarity_fun= {'cosine':cosine ,  'Euclidean_distance' : Euclidean_distance}
+numerical_similarity_fun= {'cosine':cosine ,  'Euclidean_distance' : Euclidean_distance,
+                          'wieghted_euclidean':wieghted_euclidean , 'mahalanobis':mahalanobis , 'minkowski':minkowski}
 categorical_similarity_fun = { 'cosine':cosine ,  'overlap':overlap , 'Jaccard_Distance':Jaccard_Distance , 'Monge_Elkan':Monge_Elkan ,
                               'dice':dice , 'soft_TF_IDF':soft_TF_IDF , 'tversky_Index':tversky_Index }
 
