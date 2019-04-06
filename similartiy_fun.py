@@ -211,7 +211,7 @@ def tversky_Index (o1,o2):
         o2[i]=str(o2[i])
     return TverskyIndex().get_sim_score(o1,o2)
 
-def voting_similarity (o1,o2, numerical=False , categorical=True):
+def voting_similarity (o1,o2, numerical=False):
     """
      weight similarity function
     input:
